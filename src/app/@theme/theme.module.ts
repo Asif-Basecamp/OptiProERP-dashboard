@@ -15,7 +15,7 @@ import {
   NbThemeModule,
   NbUserModule,
   NbCheckboxModule,
-  NbPopoverModule,
+  //NbPopoverModule,
   NbContextMenuModule,
   //NbProgressBarModule,
   //NbCalendarModule,
@@ -23,7 +23,7 @@ import {
   //NbStepperModule,
   NbButtonModule,
   NbInputModule,
-  //NbAccordionModule,
+  NbAccordionModule,
   NbDialogModule,
   NbWindowModule,
   //NbListModule,
@@ -35,19 +35,36 @@ import {
   //NbTooltipModule,
 } from '@nebular/theme';
 
+import { NbSecurityModule } from '@nebular/security';
 
-import { HeaderComponent, ThemeSwitcherListComponent, ThemeSwitcherComponent } from './components';
-
-import { DefaultLayoutComponent} from './layouts';
-
+import {
+  //FooterComponent,
+  HeaderComponent,
+  //SearchInputComponent,
+  //ThemeSettingsComponent,
+  //SwitcherComponent,
+  //LayoutDirectionSwitcherComponent,
+  //ThemeSwitcherComponent,
+  //ThemeSwitcherListComponent,
+  ToggleSettingsButtonComponent,
+} from './components';
+import {
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
+  EvaIconsPipe,
+} from './pipes';
+import {
+  OneColumnLayoutComponent,
+  SampleLayoutComponent,
+  ThreeColumnsLayoutComponent,
+  TwoColumnsLayoutComponent,
+} from './layouts';
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
-import { StateService } from './utils/state.service';
-
-export const NB_CORE_PROVIDERS = [
-  StateService
-];
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -62,9 +79,10 @@ const NB_MODULES = [
   //NbSearchModule,
   NbSidebarModule,
   NbCheckboxModule,
-  NbPopoverModule,
+  //NbPopoverModule,
   NbContextMenuModule,
   NgbModule,
+  NbSecurityModule, // *nbIsGranted directive,
   //NbProgressBarModule,
   //NbCalendarModule,
   //NbCalendarRangeModule,
@@ -73,7 +91,7 @@ const NB_MODULES = [
   //NbListModule,
   NbToastrModule,
   NbInputModule,
-  //NbAccordionModule,
+  NbAccordionModule,
   NbDialogModule,
   NbWindowModule,
   NbAlertModule,
@@ -84,14 +102,32 @@ const NB_MODULES = [
 ];
 
 const COMPONENTS = [
+  //SwitcherComponent,
+  //LayoutDirectionSwitcherComponent,
+  //ThemeSwitcherComponent,
+  //ThemeSwitcherListComponent,
   HeaderComponent,
-  ThemeSwitcherComponent,
-  ThemeSwitcherListComponent,
-  DefaultLayoutComponent
+  //FooterComponent,
+  //SearchInputComponent,
+  //ThemeSettingsComponent,
+  OneColumnLayoutComponent,
+  SampleLayoutComponent,
+  ThreeColumnsLayoutComponent,
+  TwoColumnsLayoutComponent,
+  ToggleSettingsButtonComponent,
 ];
 
 const ENTRY_COMPONENTS = [
-  ThemeSwitcherListComponent,
+  //ThemeSwitcherListComponent,
+];
+
+const PIPES = [
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
+  EvaIconsPipe,
 ];
 
 const NB_THEME_PROVIDERS = [
@@ -106,13 +142,12 @@ const NB_THEME_PROVIDERS = [
   ...NbDialogModule.forRoot().providers,
   ...NbWindowModule.forRoot().providers,
   ...NbToastrModule.forRoot().providers,
-  StateService
 ];
 
 @NgModule({
   imports: [...BASE_MODULES, ...NB_MODULES],
-  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS],
-  declarations: [...COMPONENTS],
+  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
+  declarations: [...COMPONENTS, ...PIPES],
   entryComponents: [...ENTRY_COMPONENTS],
 })
 export class ThemeModule {

@@ -2,7 +2,10 @@
 
 @include nb-install-component() {
   /deep/ router-outlet + * {
-    display: block;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
     animation: fade 1s;
 
     @keyframes fade {

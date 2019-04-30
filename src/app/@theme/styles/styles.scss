@@ -13,6 +13,9 @@
 // loading progress bar theme
 @import './pace.theme';
 
+// loading progress bar theme
+@import './custom';
+
 // install the framework and custom global styles
 @include nb-install() {
 
